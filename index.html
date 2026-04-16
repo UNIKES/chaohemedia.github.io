@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超核文化传媒 - 用创意赋能品牌，用专业传递价值</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        /* 顶部导航 */
+        .header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+        }
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        .nav-list {
+            display: flex;
+            list-style: none;
+        }
+        .nav-list li {
+            margin-left: 30px;
+        }
+        .nav-list a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        .nav-list a:hover {
+            color: #1a73e8;
+        }
+        .mobile-nav {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        /* 首页banner */
+        .banner {
+            margin-top: 70px;
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://tva1.sinaimg.cn/crop.0.0.1080.608.180/0080GpEaly1h83x8x8z3jj30u00u0gnh.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+        .banner-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .banner-content p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #1a73e8;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0d5bcd;
+        }
+        /* 关于我们 */
+        .about {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 50px;
+            color: #333;
+            position: relative;
+        }
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #1a73e8;
+            margin: 15px auto;
+        }
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+        }
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .about-text h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #1a73e8;
+        }
+        .about-text p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        /* 核心业务 */
+        .service {
+            background-color: #fff;
+            padding: 80px 0;
+        }
+        .service-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .service-item {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .service-icon {
+            font-size: 40px;
+            color: #1a73e8;
+            margin-bottom: 20px;
+        }
+        .service-item h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .service-item p {
+            font-size: 14px;
+            color: #666;
+        }
+        /* 案例展示 */
+        .case {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        .case-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .case-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .case-item:hover {
+            transform: scale(1.02);
+        }
+        .case-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .case-info {
+            padding: 20px;
+            background-color: #fff;
+        }
+        .case-info h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .case-info p {
+            font-size: 14px;
+            color: #666;
+        }
+        /* 联系我们 */
+        .contact {
+            background-color: #fff;
+            padding: 80px 0;
+        }
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #1a73e8;
+        }
+        .contact-form textarea {
+            height: 150px;
+            resize: none;
+        }
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #1a73e8;
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .info-icon {
+            font-size: 20px;
+            color: #1a73e8;
+            margin-right: 15px;
+        }
+        .info-text {
+            font-size: 16px;
+        }
+        /* 底部版权 */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+        .footer p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .footer a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .nav-list {
+                display: none;
+            }
+            .mobile-nav {
+                display: block;
+            }
+            .banner-content h1 {
+                font-size: 36px;
+            }
+            .banner-content p {
+                font-size: 16px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    <!-- 顶部导航 -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">超核文化传媒</a>
+            <ul class="nav-list">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#service">核心业务</a></li>
+                <li><a href="#case">案例展示</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+            <div class="mobile-nav"><i class="fas fa-bars"></i></div>
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    <!-- 首页Banner -->
+    <section class="banner" id="home">
+        <div class="banner-content">
+            <h1>超核文化传媒</h1>
+            <p>专注品牌策划、内容创作、媒体传播，以创意为核心，以专业为根基，助力企业实现品牌升级与价值增长</p>
+            <a href="#contact" class="btn">立即咨询</a&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    <!-- 关于我们 -->
+    <section class="about" id="about">
+        <h2 class="section-title">关于我们</h2>
+        <div class="about-content">
+            <div class="about-img">
+                <img src="https://tva1.sinaimg.cn/crop.0.0.1080.608.180/0080GpEaly1h83x8x8z3jj30u00u0gnh.jpg" alt="超核文化传媒办公环境">
+            </div>
+            <div class="about-text">
+                <h3>以创意为核，以传播为翼</h3>
+                <p>超核文化传媒是一家集品牌策划、内容创作、媒体推广、活动执行于一体的综合性文化传媒公司。我们拥有一支专业、年轻、富有创意的团队，深耕文化传媒领域多年，积累了丰富的行业经验与优质的资源渠道。</p>
+                <p>我们始终坚持“客户至上、创意为先、专业为本”的理念，立足市场需求，精准洞察行业趋势，为客户提供量身定制的文化传媒解决方案，帮助客户打破传播壁垒，提升品牌影响力，实现商业价值最大化。</p>
+                <p>无论是中小企业的品牌起步，还是成熟企业的品牌升级，我们都能以专业的服务、创新的思路，为客户保驾护航。</p>
+            </div>
+        </div>
+    </section>
+
+   <!-- 核心业务 -->
+    <section class="service" id="service">
+        <div class="service-container">
+            <h2 class="section-title">核心业务</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
+                    <h3>品牌策划</h3>
+                    <p>涵盖品牌定位、品牌VI设计、品牌故事撰写、品牌战略规划，帮助客户打造独特、有竞争力的品牌形象。</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-pen-fancy"></i></div>
+                    <h3>内容创作</h3>
+                    <p>包括文案撰写、短视频拍摄剪辑、图文设计、直播策划执行，为客户提供优质、有传播力的内容作品。</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-globe"></i></div>
+                    <h3>媒体传播</h3>
+                    <p>整合全网媒体资源，包括新媒体、传统媒体、行业媒体，实现品牌精准曝光，提升品牌知名度与影响力。</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-calendar-check"></i></div>
+                    <h3>活动执行</h3>
+                    <p>承接企业年会、产品发布会、品牌推广活动、线下沙龙等活动的策划与执行，全程专业把控，确保活动效果。</p>
+                </div>
+            </div>
+        </div>
+    </section&gt;
+
+    <!-- 案例展示 -->
+    <section class="case" id="case">
+        <h2 class="section-title">案例展示</h2>
+        <div class="case-list">
+            <div class="case-item">
+                <img src="https://tva1.sinaimg.cn/crop.0.0.1080.608.180/0080GpEaly1h83x8x8z3jj30u00u0gnh.jpg" alt="品牌推广案例">
+                <div class="case-info">
+                    <h3>某科技企业品牌推广案</h3>
+                    <p>整合新媒体资源，打造系列推广内容，实现品牌曝光量提升300%，客户咨询量增长200%。</p>
+                </div>
+            </div>
+            <div class="case-item">
+                <img src="https://tva1.sinaimg.cn/crop.0.0.1080.608.180/0080GpEaly1h83x8x8z3jj30u00u0gnh.jpg" alt="短视频创作案例">
+                <div class="case-info">
+                    <h3>某餐饮品牌短视频运营</h3>
+                    <p>拍摄系列短视频，优化内容运营策略，3个月内账号粉丝突破10万，带动线下门店客流增长150%。</p>
+                </div>
+            </div>
+            <div class="case-item">
+                <img src="https://tva1.sinaimg.cn/crop.0.0.1080.608.180/0080GpEaly1h83x8x8z3jj30u00u0gnh.jpg" alt="活动执行案例">
+                <div class="case-info">
+                    <h3>某企业年会策划执行</h3>
+                    <p>全程负责年会策划、场地布置、流程执行，参与人数500+，获得客户高度认可与好评。</p>
+                </div>
+            </div>
+            <div class="case-item">
+                <img src="https://tva1.sinaimg.cn/crop.0.0.1080.608.180/0080GpEaly1h83x8x8z3jj30u00u0gnh.jpg" alt="品牌VI设计案例">
+                <div class="case-info">
+                    <h3>某初创品牌VI设计</h3>
+                    <p>打造完整品牌VI体系，包括LOGO、名片、宣传册等，助力品牌快速建立专业、统一的品牌形象。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-form">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">咨询我们</h2>
+                <form action="" method="post">
+                    <input type="text" name="name" placeholder="您的姓名" required>
+                    <input type="tel" name="phone" placeholder="您的电话" required>
+                    <input type="email" name="email" placeholder="您的邮箱" required>
+                    <textarea name="message" placeholder="您的需求描述" required></textarea>
+                    <button type="submit" class="btn">提交咨询</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h3>联系信息</h3>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="info-text">地址：江苏盐城亭湖区西伏河数字智能创新社区0号馆</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-phone"></i></div>
+                    <div class="info-text">电话：177-5155-5595</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="info-text">邮箱：sjae86@88.com</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-clock"></i></div>
+                    <div class="info-text">工作时间：周一至周五 9:00-18:00</div>
+                </div>
+            </div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    <!-- 底部版权 -->
+    <footer class="footer">
+        <p>© 2026 超核文化传媒 版权所有 | 专注文化传媒领域，助力品牌成长</p>
+        <p>联系电话：177-5155-5595 | 邮箱：sjae86@88.com</p>
+    </footer>
+
+    <script>
+        // 简单移动端导航切换（点击显示/隐藏导航）
+        const mobileNav = document.querySelector('.mobile-nav');
+        const navList = document.querySelector('.nav-list');
+        mobileNav.addEventListener('click', () => {
+            navList.style.display = navList.style.display === 'flex' ? 'none' : 'flex';
+            navList.style.flexDirection = 'column';
+            navList.style.position = 'absolute';
+            navList.style.top = '70px';
+            navList.style.left = '0';
+            navList.style.width = '100%';
+            navList.style.background = '#fff';
+            navList.style.padding = '20px';
+            navList.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+        });
+
+        // 平滑滚动（点击导航跳转）
+        document.querySelectorAll('.nav-list a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+                // 移动端点击后隐藏导航
+                if (window.innerWidth <= 768) {
+                    navList.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
